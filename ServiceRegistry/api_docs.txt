@@ -1,0 +1,112 @@
+
+# Retrive all services records.
+    url : http://127.0.0.1:8000/api/v1/services/
+    endpoint : /services/
+    accepted method : get
+    note : http://127.0.0.1:8000 is local url, you can replace with your own url.
+
+    response:
+        {
+        "status": 200,
+        "message": "List of service records.",
+        "data": [
+                {
+                    "id": 1,
+                    "service": "test",
+                    "version": "0.0.1",
+                    "change": "created"
+                },
+                {
+                    "id": 2,
+                    "service": "test",
+                    "version": "0.0.1",
+                    "change": "created"
+                }
+            ]
+        }
+####################################################################
+
+# Retrive services record with version.
+    url : http://127.0.0.1:8000/api/v1/services/search-services-with-version/?version=0.0.1&service=test
+
+    endpoint : /search-services-with-version/
+    accepted method : get
+    note : http://127.0.0.1:8000 is local url, you can replace with your own url.
+
+    response:
+        {
+        "status": 200,
+        "message": "List of service records.",
+        "data": {
+            "count": 2,
+            "version": "0.0.1",
+            "service": "test"
+        }
+    }
+####################################################################
+
+# Add services record.
+    url : http://127.0.0.1:8000/api/v1/services/
+
+    endpoint : /services/
+    accepted method : POST
+    note : http://127.0.0.1:8000 is local url, you can replace with your own url.
+    accepted parameter: 
+            service
+            version
+
+
+    response:
+        {
+            "status": 201,
+            "message": "Successfully service created.",
+            "data": [
+                {
+                    "service": "test",
+                    "version": "0.0.1",
+                    "change": "created"
+                }
+            ]
+        }
+####################################################################
+
+# Update services record.
+    url : http://127.0.0.1:8000/api/v1/services/11/
+
+    endpoint : /services/11/
+    accepted method : PUT
+    note : 11 is demo id and http://127.0.0.1:8000 is local url, you can replace with your own url.
+    accepted parameter: 
+            service
+            version
+
+    response:
+        {
+            "status": 201,
+            "message": "Successfully service updated.",
+            "data": [
+                {
+                    "service": "test11444",
+                    "version": "0.0.1",
+                    "change": "changed"
+                }
+            ]
+        }
+####################################################################
+
+# Delete services record.
+    url : http://127.0.0.1:8000/api/v1/services/11/
+
+    endpoint : /services/11/
+    accepted method : DELETE
+    note : 11 is demo id and http://127.0.0.1:8000 is local url, you can replace with your own url.
+
+    response:
+        {
+            "status": 200,
+            "message": "Successfully removed service.",
+            "data": {
+                "change": "removed",
+                "service": "test11444"
+            }
+        }
